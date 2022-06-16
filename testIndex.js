@@ -15,6 +15,8 @@ const getNewFlags = () => {
 
 };
 
+const startGame = () => {
+
 const fetchCountry1 = async () => {
   const index = getRandomNumber();
   const response = await fetch("https://restcountries.com/v3.1/all");
@@ -111,6 +113,7 @@ button1.addEventListener("click", () => {
   }
 });
 
+<<<<<<< HEAD
 const button2 = document.querySelector("#coutry2");
 button2.addEventListener("click", () => {
   console.log("button3 clicked");
@@ -130,6 +133,77 @@ button2.addEventListener("click", () => {
     return;
   }
 });
+=======
+const button0 = document.querySelector('#coutry0')
+button0.addEventListener('click', () =>{
+    console.log('button1 clicked')
+    let answer = 0;
+    let result = ''
+    if(answer === answerIndex){
+        console.log('correct')
+        result = 'correct'
+        createAnswerElement(result)
+        getNewFlags()
+        console.log(button0)
+        return
+    } else{
+        result = 'wrong'
+        console.log('wrong')
+        createAnswerElement(result)
+        getNewFlags()
+        return
+    }
+
+})
+
+const button1 = document.querySelector('#coutry1')
+button1.addEventListener('click', () =>{
+    console.log('button2 clicked')
+    let answer = 1;
+    let result = ''
+    if(answer === answerIndex){
+        console.log('correct')
+        result = 'correct'
+        createAnswerElement(result)
+        getNewFlags()
+       return
+    } else{
+        result = 'wrong'
+        console.log('wrong')
+        createAnswerElement(result)
+        getNewFlags()
+        return
+    }
+})
+
+
+const button2 = document.querySelector('#coutry2')
+button2.addEventListener('click', () =>{
+    console.log('button3 clicked')
+    let answer = 2;
+    let result = ''
+    if(answer === answerIndex){
+         result = 'correct'
+         console.log('correct')
+        createAnswerElement(result)
+        getNewFlags()
+        return
+    } else{
+         result = 'wrong'
+         console.log('wrong')
+        createAnswerElement(result)
+        getNewFlags()
+        return
+    }
+})
+
+
+
+
+
+
+
+>>>>>>> 301ea88c732490c3497834a6923139ba391c0125
 
 // const button1= document.querySelector('#coutry1')
 // const button2 = document.querySelector('#coutry2')
