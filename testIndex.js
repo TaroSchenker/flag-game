@@ -11,67 +11,76 @@ function createAnswerElement(result){
 
 const getNewFlags = () => {
         console.log('i am in the loop')
-        setInterval(() => {
-                fetchCountry1()
-                fetchCountry2()
-                fetchCountry3()
-                console.log('end of get new flags')
-        }, 1000)
-      
+      console.log('answerIndex',answerIndex)
+            startGame()
+            console.log('end of get new flags')
+            return
+
+     
 }
+
+const startGame = () => {
 
 const fetchCountry1 = async () => {
-    const index = getRandomNumber()
-    const response = await fetch('https://restcountries.com/v3.1/all')
-    const countryData = await response.json();
-    console.log(countryData)
-    const countryFlag = countryData[index].flags.png
-    console.log(countryFlag)
-    if(answerIndex ===0){
-        const title = document.getElementById('countryName')  
-        title.textContent = countryData[index].name.common  
-    }
-    const img = document.getElementById('flag1')
-    img.src = countryFlag
+        const index = getRandomNumber()
+        console.log('index inside fetch country 1', index)
+        const response = await fetch('https://restcountries.com/v3.1/all')
+        const countryData = await response.json();
+        console.log(countryData)
+        const countryFlag = countryData[index].flags.png
+        console.log(countryFlag)
+            if(answerIndex ===0){
+            const title = document.getElementById('countryName')  
+            title.textContent = countryData[index].name.common  
+            }
+        const img = document.getElementById('flag1')
+        img.src = countryFlag
+
+        fetchCountry1().catch(err =>  console.log(err))
  }
 
-const fetchCountry2 = async () => {
-    const index = getRandomNumber()
-    const response = await fetch('https://restcountries.com/v3.1/all')
-    const countryData = await response.json();
-    console.log(countryData)
-    const countryFlag = countryData[index].flags.png
-    console.log(countryFlag)
-    if(answerIndex ===1){
-        const title = document.getElementById('countryName')  
+    const fetchCountry2 = async () => {
+        const index = getRandomNumber()
+        const response = await fetch('https://restcountries.com/v3.1/all')
+        const countryData = await response.json();
+        console.log(countryData)
+        const countryFlag = countryData[index].flags.png
+        console.log(countryFlag)
+        if(answerIndex ===1){
+            const title = document.getElementById('countryName')  
+            title.textContent = countryData[index].name.common
+        }
+        const img = document.getElementById('flag2')
+        img.src = countryFlag
         title.textContent = countryData[index].name.common
-    }
-    const img = document.getElementById('flag2')
-    img.src = countryFlag
-    title.textContent = countryData[index].name.common
-}
+
+    fetchCountry2().catch(err =>  console.log(err))
+    } 
 
 
-const fetchCountry3 = async () => {
-    const index = getRandomNumber()
-    const response = await fetch('https://restcountries.com/v3.1/all')
-    const countryData = await response.json();
-    console.log(countryData)
-    const countryFlag = countryData[index].flags.png
-    console.log(countryFlag)
-    if(answerIndex ===2){
-        const title = document.getElementById('countryName')  
+
+
+    const fetchCountry3 = async () => {
+        const index = getRandomNumber()
+        const response = await fetch('https://restcountries.com/v3.1/all')
+        const countryData = await response.json();
+        console.log(countryData)
+        const countryFlag = countryData[index].flags.png
+        console.log(countryFlag)
+        if(answerIndex ===2){
+            const title = document.getElementById('countryName')  
+            title.textContent = countryData[index].name.common
+        }
+        const img = document.getElementById('flag3')
+        img.src = countryFlag
         title.textContent = countryData[index].name.common
+        fetchCountry3().catch(err =>  console.log(err))
     }
-    const img = document.getElementById('flag3')
-    img.src = countryFlag
-    title.textContent = countryData[index].name.common
-}
 
-fetchCountry1().catch(err =>  console.log(err))
-fetchCountry2().catch(err =>  console.log(err))
-fetchCountry3().catch(err =>  console.log(err))
 
+} ///end start game loop
+
+startGame()
 
 
 
@@ -93,6 +102,7 @@ button0.addEventListener('click', () =>{
         result = 'correct'
         createAnswerElement(result)
         getNewFlags()
+        console.log(button0)
         return
     } else{
         result = 'wrong'
