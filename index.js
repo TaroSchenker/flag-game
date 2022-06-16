@@ -1,7 +1,12 @@
 
 let countryData;
+let answerIndex = Math.floor(Math.random() * 3)
+console.log(answerIndex)
 
-
+function createAnswerElement(result){
+    const resultElement  = document.querySelector('#resultElement')
+    resultElement.textContent = result
+}
 
 const fetchCountry1 = async () => {
     const index = getRandomNumber()
@@ -10,14 +15,14 @@ const fetchCountry1 = async () => {
     console.log(countryData)
     const countryFlag = countryData[index].flags.png
     console.log(countryFlag)
-    const title = document.getElementById('countryName')
+    if(answerIndex ===0){
+        const title = document.getElementById('countryName')  
+        title.textContent = countryData[index].name.common
+        
+    }
     const img = document.getElementById('flag1')
     img.src = countryFlag
-    title.textContent = countryData[index].name.common
-}
-
-fetchCountry1().catch(err =>  console.log(err))
-
+ }
 
 const fetchCountry2 = async () => {
     const index = getRandomNumber()
@@ -26,13 +31,15 @@ const fetchCountry2 = async () => {
     console.log(countryData)
     const countryFlag = countryData[index].flags.png
     console.log(countryFlag)
-    const title = document.getElementById('countryName2')
+    if(answerIndex ===1){
+        const title = document.getElementById('countryName')  
+        title.textContent = countryData[index].name.common
+    }
     const img = document.getElementById('flag2')
     img.src = countryFlag
     title.textContent = countryData[index].name.common
 }
 
-fetchCountry2().catch(err =>  console.log(err))
 
 const fetchCountry3 = async () => {
     const index = getRandomNumber()
@@ -41,13 +48,20 @@ const fetchCountry3 = async () => {
     console.log(countryData)
     const countryFlag = countryData[index].flags.png
     console.log(countryFlag)
-    const title = document.getElementById('countryName3')
+    if(answerIndex ===2){
+        const title = document.getElementById('countryName')  
+        title.textContent = countryData[index].name.common
+    }
+
     const img = document.getElementById('flag3')
     img.src = countryFlag
     title.textContent = countryData[index].name.common
 }
 
+fetchCountry1().catch(err =>  console.log(err))
+fetchCountry2().catch(err =>  console.log(err))
 fetchCountry3().catch(err =>  console.log(err))
+
 
 
 
@@ -61,9 +75,60 @@ function getRandomNumber() {
 
 getRandomNumber()
 
-// const button = document.querySelector('#nextCountry')
-// button.addEventListener('click', () => {
-//     indexNumber++
-//     fetchCountry(indexNumber)
+
+
+
+const button0 = document.querySelector('#coutry0')
+button0.addEventListener('click', () =>{
+    let answer = 0;
+    if(answer === answerIndex){
+        let result = 'correct'
+        createAnswerElement(result)
+    } else{
+        console.log('wrong')
+    }
+
+})
+
+const button1 = document.querySelector('#coutry1')
+button1.addEventListener('click', () =>{
+    let answer = 1;
+    if(answer === answerIndex){
+        console.log('correct')
+        let result = 'correct'
+        createAnswerElement(result)
+    } else{
+        console.log('wrong')
+    }
+})
+
+
+const button2 = document.querySelector('#coutry2')
+button2.addEventListener('click', () =>{
+    let answer = 2;
+    if(answer === answerIndex){
+        let result = 'correct'
+        createAnswerElement(result)
+    } else{
+        console.log('wrong')
+    }
+})
+
+
+
+
+
+
+
+
+// const button1= document.querySelector('#coutry1')
+// const button2 = document.querySelector('#coutry2')
+
+
+// button0.addEventListener('click', () => {
+// const button0 = document.querySelector('#coutry0')
+// const button1= document.querySelector('#coutry1')
+// const button2 = document.querySelector('#coutry2')
+
 
 // })
