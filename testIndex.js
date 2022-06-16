@@ -6,6 +6,16 @@ console.log(answerIndex)
 function createAnswerElement(result){
     const resultElement  = document.querySelector('#resultElement')
     resultElement.textContent = result
+
+    getNewFlags()
+}
+
+const getNewFlags = () => {
+        console.log('i am in the loop')
+        fetchCountry1()
+        fetchCountry2()
+        fetchCountry3()
+        console.log('end of get new flags')
 }
 
 const fetchCountry1 = async () => {
@@ -51,7 +61,6 @@ const fetchCountry3 = async () => {
         const title = document.getElementById('countryName')  
         title.textContent = countryData[index].name.common
     }
-
     const img = document.getElementById('flag3')
     img.src = countryFlag
     title.textContent = countryData[index].name.common
@@ -67,49 +76,63 @@ fetchCountry3().catch(err =>  console.log(err))
 
 function getRandomNumber() {
     let randomNumber = Math.floor(Math.random() * 100)
-    // console.log(randomNumber)
     return randomNumber
-
 }
-
-getRandomNumber()
 
 
 
 
 const button0 = document.querySelector('#coutry0')
 button0.addEventListener('click', () =>{
+    console.log('button1 clicked')
     let answer = 0;
+    let result = ''
     if(answer === answerIndex){
-        let result = 'correct'
+        result = 'correct'
         createAnswerElement(result)
+        getNewFlags()
+        return
     } else{
-        console.log('wrong')
+        result = 'wrong'
+        createAnswerElement(result)
+        getNewFlags()
     }
 
 })
 
 const button1 = document.querySelector('#coutry1')
 button1.addEventListener('click', () =>{
+    console.log('button1 clicked')
     let answer = 1;
+    let result = ''
     if(answer === answerIndex){
-        console.log('correct')
-        let result = 'correct'
+      
+        result = 'correct'
         createAnswerElement(result)
+        getNewFlags()
+       return
     } else{
-        console.log('wrong')
+        result = 'wrong'
+        createAnswerElement(result)
+        getNewFlags()
     }
 })
 
 
 const button2 = document.querySelector('#coutry2')
 button2.addEventListener('click', () =>{
+    console.log('button1 clicked')
     let answer = 2;
+    let result = ''
     if(answer === answerIndex){
-        let result = 'correct'
+         result = 'correct'
         createAnswerElement(result)
+        getNewFlags()
+        return
     } else{
-        console.log('wrong')
+         result = 'wrong'
+        createAnswerElement(result)
+        getNewFlags()
     }
 })
 
