@@ -10,8 +10,8 @@ function createAnswerElement(result){
 }
 
 const getNewFlags = () => {
-        console.log('i am in the loop')
-      console.log('answerIndex',answerIndex)
+              console.log('i am in the loop')
+             console.log('answerIndex',answerIndex)
             startGame()
             console.log('end of get new flags')
             return
@@ -20,6 +20,9 @@ const getNewFlags = () => {
 }
 
 const startGame = () => {
+const button0 = document.querySelector('#coutry0')
+const button1 = document.querySelector('#coutry1')
+const button2 = document.querySelector('#coutry2')
 
 const fetchCountry1 = async () => {
         const index = getRandomNumber()
@@ -35,11 +38,10 @@ const fetchCountry1 = async () => {
             }
         const img = document.getElementById('flag1')
         img.src = countryFlag
-
         fetchCountry1().catch(err =>  console.log(err))
  }
 
-    const fetchCountry2 = async () => {
+const fetchCountry2 = async () => {
         const index = getRandomNumber()
         const response = await fetch('https://restcountries.com/v3.1/all')
         const countryData = await response.json();
@@ -92,7 +94,7 @@ function getRandomNumber() {
 
 
 
-const button0 = document.querySelector('#coutry0')
+
 button0.addEventListener('click', () =>{
     console.log('button1 clicked')
     let answer = 0;
@@ -114,7 +116,7 @@ button0.addEventListener('click', () =>{
 
 })
 
-const button1 = document.querySelector('#coutry1')
+
 button1.addEventListener('click', () =>{
     console.log('button2 clicked')
     let answer = 1;
@@ -135,7 +137,7 @@ button1.addEventListener('click', () =>{
 })
 
 
-const button2 = document.querySelector('#coutry2')
+
 button2.addEventListener('click', () =>{
     console.log('button3 clicked')
     let answer = 2;
@@ -160,16 +162,3 @@ button2.addEventListener('click', () =>{
 
 
 
-
-
-// const button1= document.querySelector('#coutry1')
-// const button2 = document.querySelector('#coutry2')
-
-
-// button0.addEventListener('click', () => {
-// const button0 = document.querySelector('#coutry0')
-// const button1= document.querySelector('#coutry1')
-// const button2 = document.querySelector('#coutry2')
-
-
-// })
