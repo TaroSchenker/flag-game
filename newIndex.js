@@ -2,25 +2,24 @@
 let countryData;
 let answerIndex = Math.floor(Math.random() * 3)
 console.log(answerIndex)
-
-
+let reset = false
 
 function createAnswerElement(result){
-    let scoreCounter = 0
     const resultElement  = document.getElementById('resultElement')
-    console.log(resultElement)
+    console.log(resultElement) 
     resultElement.textContent = result;
-
 }
 
 const fetchCountry1 = async () => {
     const index = getRandomNumber()
     const response = await fetch('https://restcountries.com/v3.1/all')
     const countryData = await response.json();
+    console.log(countryData)
     const countryFlag = countryData[index].flags.png
+    console.log(countryFlag)
     if(answerIndex ===0){
-        const title = document.getElementById('countryName')
-        title.textContent = countryData[index].name.common
+        const title = document.getElementById('countryName')  
+        title.textContent = countryData[index].name.common  
     }
     const img = document.getElementById('flag1')
     img.src = countryFlag
@@ -30,9 +29,11 @@ const fetchCountry2 = async () => {
     const index = getRandomNumber()
     const response = await fetch('https://restcountries.com/v3.1/all')
     const countryData = await response.json();
+    console.log(countryData)
     const countryFlag = countryData[index].flags.png
+    console.log(countryFlag)
     if(answerIndex ===1){
-        const title = document.getElementById('countryName')
+        const title = document.getElementById('countryName')  
         title.textContent = countryData[index].name.common
     }
     const img = document.getElementById('flag2')
@@ -45,9 +46,11 @@ const fetchCountry3 = async () => {
     const index = getRandomNumber()
     const response = await fetch('https://restcountries.com/v3.1/all')
     const countryData = await response.json();
+    console.log(countryData)
     const countryFlag = countryData[index].flags.png
+    console.log(countryFlag)
     if(answerIndex ===2){
-        const title = document.getElementById('countryName')
+        const title = document.getElementById('countryName')  
         title.textContent = countryData[index].name.common
     }
 
@@ -92,6 +95,7 @@ const button1 = document.querySelector('#coutry1')
 button1.addEventListener('click', () =>{
     let answer = 1;
     if(answer === answerIndex){
+        console.log('correct')
         let result = 'correct'
         createAnswerElement(result)
     } else{
