@@ -4,7 +4,7 @@ const gameState = {
   userGuess: '',
   totalScore: 0,
   turns: 0,
-  result: ''
+  result: '',
   highScore:0
 }
 
@@ -134,7 +134,10 @@ const startGame = document.querySelector('#startGame')
       return
     } else if (userGuess != gameState.correctAnswer){
       gameState.result = 'Wrong, Score Reset!'
-
+      if(gameState.totalScore > gameState.highScore){
+        gameState.highScore = gameState.totalScore
+        updateHighScore()
+      }
       updateGuessState()
       createCountryAssets()
     }
@@ -142,10 +145,11 @@ const startGame = document.querySelector('#startGame')
 
 
   const updateHighScore = () => {
-    
-  }
+    const highScore = document.querySelector('#highscore')
+    highScore.textContent = gameState.highScore
+    gameState.totalScore = 0
 
- 
+  }
 
 
 
