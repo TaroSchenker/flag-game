@@ -2,8 +2,11 @@ const gameState = {
   gameState: 'wait',
   correctAnswer: '',
   userGuess: '',
-  totalScore: 0
+  totalScore: 0,
+  turns: 0
 }
+
+let correctAnswer = null
 
 function getRandomNumber() {
     let randomNumber = Math.floor(Math.random() * 100)
@@ -19,6 +22,7 @@ const makeFetchRequest= async () => {
         const country1Index = getRandomNumber()
         const country2Index = getRandomNumber()
         const country3Index = getRandomNumber()
+        gameState.correctAnswer = Math.floor((Math.random() * 3))
         //save all api data in country data
         const countryData = await makeFetchRequest()
         //create country flags from data using index
@@ -38,7 +42,8 @@ const makeFetchRequest= async () => {
 
  const createCountryAssets =  async () => {
         const countryArray = await getGameStates()
-        gameState.correctAnswer = Math.floor((Math.random() * 3) + 1)
+       
+        console.log('createassets ..answer is', gameState.correctAnswer)
         console.log(gameState)
         // country flag images
         const flagImage1 = countryArray[0][0]
@@ -53,7 +58,7 @@ const makeFetchRequest= async () => {
         //country name to display (we look for this flag)
         const countryNameHTML = document.querySelector('#resultElement')
         //update element with country name
-        countryNameHTML.textContent = countryName1
+        countryNameHTML.textContent = countryArray[gameState.correctAnswer][1]
         //create flag html elements
         const flagHTML1 = document.querySelector('#flag1')
         const flagHTML2 = document.querySelector('#flag2')
@@ -87,27 +92,46 @@ const makeFetchRequest= async () => {
  
   })
 
-  //Handle button clicks
-  const handleClick =  (e) => {
-   gameState.userGuess = parseInt(e.target.alt) 
 
-    handleGuess()
+const startGame = document.querySelector('#startGame')
+    startGame.addEventListener('click', (e) => {
+    initialiseGameState()
+    createCountryAssets()
+  })
+
+  const initialiseGameState = () => { 
+    gameState.gameState = 'active'
+    gameState.totalScore = 0 
+    gameState.turns = 0;
+    console.log('Empty Game State initialised', gameState)
+
+  }
+  //Handle button clicks
+  const handleClick = async (e) => {
+    gameState.gameState = 'active'
+    gameState.turns++
+    console.log('handle click', gameState)
+   let userGuess = parseInt(e.target.alt) 
+   handleGuess(userGuess)
   }
   
-  const handleGuess = () => {
-    if(gameState.userGuess === gameState.correctAnswer){
+  const handleGuess = async (userGuess) => {
+    console.log('handleGuess', 'userguessed', userGuess, correctAnswer)
+    if(userGuess === gameState.correctAnswer){
       console.log('congratualtions"')
       gameState.totalScore++
+      gameState.gameState = 'waiting'
+      console.log('handle guess', gameState)
       createCountryAssets()
       return
-    } else {
+    } else if (userGuess != gameState.correctAnswer){
       console.log('nonooooooo')
       createCountryAssets()
     }
    
   }
  
-  createCountryAssets()
+
 
 
 

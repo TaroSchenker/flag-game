@@ -6,7 +6,7 @@
 }
 
 .flex {
-    width: 60vw;
+    width: 80vw;
     height: auto;
     display: flex;
     margin: 0 auto;
@@ -27,6 +27,13 @@ img{
 #countryName {
     display: flex;
     justify-content: center;
+}
+button{
+    margin: 0 20px
+}
+
+#startGame {
+    margin-left: 500px
 }
 /* 
 @media (max-width: 1171px) {
