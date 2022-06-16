@@ -7,9 +7,7 @@ const gameState = {
   result: '',
   highScore:0
 }
-
 let correctAnswer = null
-
 function getRandomNumber() {
     let randomNumber = Math.floor(Math.random() * 100)
     return randomNumber
@@ -41,7 +39,6 @@ const makeFetchRequest= async () => {
         const countryArray = [[countryFlag1,countryName1], [countryFlag2,countryName2],[countryFlag3,countryName3]]
         return countryArray
  }
-
  const createCountryAssets =  async () => {
         const countryArray = await getGameStates()
        
@@ -78,17 +75,19 @@ const makeFetchRequest= async () => {
  const updateGuessState = (result) => {
   const gameStateFooter = document.querySelector('#gameStateFooter')
   gameStateFooter.textContent = gameState.result
+  const guessContainer = document.querySelector('#guessContainer')
+  gameState.result === 'Correct!' ?  guessContainer.style.backgroundColor = 'green' : guessContainer.style.backgroundColor = 'red'
   setTimeout(() => {
     gameStateFooter.textContent = ''
+    guessContainer.style.backgroundColor = 'rgba(255, 255, 255, 0.8)'
   }, 1000)
- }
 
+ }
 //Button Clicks
   const button1 = document.querySelector('#button1')
   button1.addEventListener('click', (e) => {
     handleClick(e)
   })
-
   const button2 = document.querySelector('#button2')
   button2.addEventListener('click', (e) => {
     handleClick(e)
@@ -142,7 +141,6 @@ const startGame = document.querySelector('#startGame')
       createCountryAssets()
     }
   }
-
 
   const updateHighScore = () => {
     const highScore = document.querySelector('#highscore')
