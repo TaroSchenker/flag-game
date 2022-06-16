@@ -7,15 +7,17 @@ function createAnswerElement(result){
     const resultElement  = document.querySelector('#resultElement')
     resultElement.textContent = result
 
-    getNewFlags()
 }
 
 const getNewFlags = () => {
         console.log('i am in the loop')
-        fetchCountry1()
-        fetchCountry2()
-        fetchCountry3()
-        console.log('end of get new flags')
+        setInterval(() => {
+                fetchCountry1()
+                fetchCountry2()
+                fetchCountry3()
+                console.log('end of get new flags')
+        }, 1000)
+      
 }
 
 const fetchCountry1 = async () => {
@@ -81,58 +83,65 @@ function getRandomNumber() {
 
 
 
-
 const button0 = document.querySelector('#coutry0')
 button0.addEventListener('click', () =>{
     console.log('button1 clicked')
     let answer = 0;
     let result = ''
     if(answer === answerIndex){
+        console.log('correct')
         result = 'correct'
         createAnswerElement(result)
         getNewFlags()
         return
     } else{
         result = 'wrong'
+        console.log('wrong')
         createAnswerElement(result)
         getNewFlags()
+        return
     }
 
 })
 
 const button1 = document.querySelector('#coutry1')
 button1.addEventListener('click', () =>{
-    console.log('button1 clicked')
+    console.log('button2 clicked')
     let answer = 1;
     let result = ''
     if(answer === answerIndex){
-      
+        console.log('correct')
         result = 'correct'
         createAnswerElement(result)
         getNewFlags()
        return
     } else{
         result = 'wrong'
+        console.log('wrong')
         createAnswerElement(result)
         getNewFlags()
+        return
     }
 })
 
 
 const button2 = document.querySelector('#coutry2')
 button2.addEventListener('click', () =>{
-    console.log('button1 clicked')
+    console.log('button3 clicked')
     let answer = 2;
     let result = ''
     if(answer === answerIndex){
          result = 'correct'
+         console.log('correct')
         createAnswerElement(result)
         getNewFlags()
         return
     } else{
          result = 'wrong'
+         console.log('wrong')
         createAnswerElement(result)
         getNewFlags()
+        return
     }
 })
 

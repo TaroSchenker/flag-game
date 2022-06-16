@@ -4,8 +4,9 @@ let answerIndex = Math.floor(Math.random() * 3)
 console.log(answerIndex)
 
 function createAnswerElement(result){
-    const resultElement  = document.querySelector('#resultElement')
-    resultElement.textContent = result
+    const resultElement  = document.getElementById('resultElement')
+    console.log(resultElement) 
+    resultElement.textContent = result;
 }
 
 const fetchCountry1 = async () => {
