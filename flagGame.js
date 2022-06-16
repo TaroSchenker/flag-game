@@ -3,7 +3,9 @@ const gameState = {
   correctAnswer: '',
   userGuess: '',
   totalScore: 0,
-  turns: 0
+  turns: 0,
+  result: ''
+  highScore:0
 }
 
 let correctAnswer = null
@@ -70,9 +72,15 @@ const makeFetchRequest= async () => {
 
         const score = document.querySelector('#score')
         score.textContent = gameState.totalScore
-        console.log(score)
+        console.log(score)   
+ }
 
-      
+ const updateGuessState = (result) => {
+  const gameStateFooter = document.querySelector('#gameStateFooter')
+  gameStateFooter.textContent = gameState.result
+  setTimeout(() => {
+    gameStateFooter.textContent = ''
+  }, 1000)
  }
 
 //Button Clicks
@@ -110,26 +118,33 @@ const startGame = document.querySelector('#startGame')
   const handleClick = async (e) => {
     gameState.gameState = 'active'
     gameState.turns++
-    console.log('handle click', gameState)
    let userGuess = parseInt(e.target.alt) 
    handleGuess(userGuess)
   }
   
+  //handle guesses
   const handleGuess = async (userGuess) => {
     console.log('handleGuess', 'userguessed', userGuess, correctAnswer)
     if(userGuess === gameState.correctAnswer){
-      console.log('congratualtions"')
+      gameState.result = 'Correct!'
+      updateGuessState()
       gameState.totalScore++
       gameState.gameState = 'waiting'
-      console.log('handle guess', gameState)
       createCountryAssets()
       return
     } else if (userGuess != gameState.correctAnswer){
-      console.log('nonooooooo')
+      gameState.result = 'Wrong, Score Reset!'
+
+      updateGuessState()
       createCountryAssets()
     }
-   
   }
+
+
+  const updateHighScore = () => {
+    
+  }
+
  
 
 
