@@ -5,16 +5,18 @@ const gameState = {
   totalScore: 0,
   turns: 0,
   result: '',
-  highScore:0
+  highScore:0,
+  visibility: 'hidden'
 }
 let correctAnswer = null
 function getRandomNumber() {
-    let randomNumber = Math.floor(Math.random() * 100)
+    let randomNumber = Math.floor(Math.random() * 248)
     return randomNumber
 }
 const makeFetchRequest= async () => {
     const response = await fetch('https://restcountries.com/v3.1/all')
     const countryData = await response.json();
+    console.log('full data',countryData)
     return countryData;
 }
  const getGameStates = async () => {
@@ -41,9 +43,14 @@ const makeFetchRequest= async () => {
  }
  const createCountryAssets =  async () => {
         const countryArray = await getGameStates()
-       
-        console.log('createassets ..answer is', gameState.correctAnswer)
-        console.log(gameState)
+        // console.log(gameState.visibility)
+        //  const flagVisibility = document.querySelectorAll('#flag1')
+        //  console.log('flag',flagVisibility)
+        //  flagVisibility.style.display = 'none'
+        // console.log('style', flagVisibility.style.visibility )
+
+        // console.log('createassets ..answer is', gameState.correctAnswer)
+        // console.log(gameState)
         // country flag images
         const flagImage1 = countryArray[0][0]
         const flagImage2 = countryArray[1][0]
@@ -66,6 +73,7 @@ const makeFetchRequest= async () => {
         flagHTML1.src = flagImage1
         flagHTML2.src = flagImage2
         flagHTML3.src = flagImage3
+
 
         const score = document.querySelector('#score')
         score.textContent = gameState.totalScore
@@ -102,12 +110,14 @@ const makeFetchRequest= async () => {
 
 const startGame = document.querySelector('#startGame')
     startGame.addEventListener('click', (e) => {
+    startGame.style.display = 'none'
     initialiseGameState()
     createCountryAssets()
   })
 
   const initialiseGameState = () => { 
     gameState.gameState = 'active'
+    gameState.visibility = 'visible'
     gameState.totalScore = 0 
     gameState.turns = 0;
     console.log('Empty Game State initialised', gameState)
@@ -116,8 +126,11 @@ const startGame = document.querySelector('#startGame')
   //Handle button clicks
   const handleClick = async (e) => {
     gameState.gameState = 'active'
+    gameState.visibility = 'hidden'
     gameState.turns++
    let userGuess = parseInt(e.target.alt) 
+  //  const flagVisibility = document.getElementsByClassName('img-btn-container')
+ 
    handleGuess(userGuess)
   }
   
