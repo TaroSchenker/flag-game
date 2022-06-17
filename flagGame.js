@@ -103,6 +103,7 @@ const makeFetchRequest= async () => {
 
 const startGame = document.querySelector('#startGame')
     startGame.addEventListener('click', (e) => {
+    document.getElementById("startGame").style.display = "none";
     initialiseGameState()
     createCountryAssets()
   })
