@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="guess.css">
+</head>
+<body>
+    <div class="grid-container">
+        <div class="header">
+            <h1>Guess A Flag  </h1>
+            <button id="startGame"> Start Game</button> 
+        </div>
+        <div class="menu">
+            Score Card
+       
+           <p> Total Score:</p>
+            <p id="score"> </p>
+            <p> High Score:</p>
+            <p id="highscore"> </p>
+        </div>
+        <div class="main" id="changeBackground">
+            <section class="flex">
+                <div class="img-btn-container">
+                    <button id='button1'>
+                         <img alt="0" id="flag1" src="">
+                    </button>
+                </div>
+                <div class="img-btn-container">
+                    <button id='button2'>
+                         <img alt="1" id="flag2" src="">
+                    </button>
+                </div>
+                <div class="img-btn-container">
+                    <button id='button3'>
+                         <img alt="2" id="flag3" src="">
+                    </button>
+                </div>
+            </section>
+        </div>
+        <div class="right" id="changeBackground">
+            <div>
+                <h4> Guess which Flag belongs </h4>
+                <h4>to the country below...</h4>
+                <h2 id="resultElement"></h2>
+                <h1 id="gameStateFooter"> </h1>
+
+            </div>
+        </div>
+        <div class="footer" id="guessContainer" id="changeBackground">
+         
+        </div>
+    </div>
+
+
+    <script src="../js/flagGame.js"></script>
+</body>
+
+</html>
