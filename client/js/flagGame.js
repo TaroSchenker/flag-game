@@ -83,12 +83,12 @@ const makeFetchRequest= async () => {
  const updateGuessState = (result) => {
   const gameStateFooter = document.querySelector('#gameStateFooter')
   gameStateFooter.textContent = gameState.result
-  const guessContainer = document.querySelector('#guessContainer')
+  const guessContainer = document.querySelector('[id=changeBackground]')
   gameState.result === 'Correct!' ?  guessContainer.style.backgroundColor = 'green' : guessContainer.style.backgroundColor = 'red'
   setTimeout(() => {
     gameStateFooter.textContent = ''
     guessContainer.style.backgroundColor = 'rgba(255, 255, 255, 0.8)'
-  }, 1000)
+  }, 1200)
 
  }
 //Button Clicks
@@ -106,6 +106,7 @@ const makeFetchRequest= async () => {
     handleClick(e)
  
   })
+
 
 
 const startGame = document.querySelector('#startGame')

@@ -1,3 +1,7 @@
+body{
+  overflow: hidden;
+}
+
 
 .header { 
     grid-area: header; 
@@ -37,24 +41,53 @@
 img{
     height: 15vh;
     width: auto;
-    background-color: rgba(255, 255, 255, 0.8);
-
-
+    background-color: #2196F3;
+    border: none;
     -moz-box-shadow: 10px 10px 5px #ccc;
     -webkit-box-shadow: 10px 10px 5px #ccc;
     box-shadow: 10px 10px 5px #ccc;
-
     border-radius:25px;
+}
+button{
+  /* height: 15vh; */
+  width: auto;
+  background-color: rgba(255, 255, 255, 0.8);
 
-  
+  border: none;
+  -moz-box-shadow: 10px 10px 5px #ccc;
+  -webkit-box-shadow: 10px 10px 5px #ccc;
+  box-shadow: 10px 10px 5px #ccc;
+  border-radius:25px;
+  /* display: none; */
 }
 
-.img-btn-container{
-   
-    /* display: none; */
-}
+/* .img-btn-container{
+
+     display: none; 
+} 
+*/
 
 #startGame{
-  margin:auto;
-  display:block
+  margin:20px auto;
+  display:block;
+  height: 50px;
+  width: 240px;
+  font-size: 22px;
+  border: 3px solid black
+
+}
+
+.footer{
+  padding:0px;
+}
+
+
+
+.grid-container > div{
+  padding:0px;
+}
+
+.right h1{
+  border: 2px solid black;
+  
 }

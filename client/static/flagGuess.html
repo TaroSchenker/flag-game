@@ -11,17 +11,18 @@
 <body>
     <div class="grid-container">
         <div class="header">
-            Guess A Flag 
+            <h1>Guess A Flag  </h1>
+            <button id="startGame"> Start Game</button> 
         </div>
         <div class="menu">
             Score Card
-            <button id="startGame"> Start Game</button> 
+       
            <p> Total Score:</p>
             <p id="score"> </p>
             <p> High Score:</p>
             <p id="highscore"> </p>
         </div>
-        <div class="main">
+        <div class="main" id="changeBackground">
             <section class="flex">
                 <div class="img-btn-container">
                     <button id='button1'>
@@ -40,19 +41,22 @@
                 </div>
             </section>
         </div>
-        <div class="right">
+        <div class="right" id="changeBackground">
             <div>
-                <h2 id="resultElement">Country to guess...</h2>
+                <h4> Guess which Flag belongs </h4>
+                <h4>to the country below...</h4>
+                <h2 id="resultElement"></h2>
+                <h1 id="gameStateFooter"> </h1>
 
             </div>
         </div>
-        <div class="footer" id="guessContainer"">
-            <p id="gameStateFooter"> </p>
+        <div class="footer" id="guessContainer" id="changeBackground">
+         
         </div>
     </div>
 
 
-    <script src="flagGame.js"></script>
+    <script src="../js/flagGame.js"></script>
 </body>
 
 </html>
