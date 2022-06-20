@@ -1,14 +1,15 @@
- const countryData = [{
-    "name": {
-    "common": "Germany",
-    "official": "Federal Republic of Germany",
-    "nativeName": {
-    "deu": {
-    "official": "Bundesrepublik Deutschland",
-    "common": "Deutschland"
-    }
-    }
-    },
+ const countryData = [
+    {
+        "name": {
+                "common": "Germany",
+                "official": "Federal Republic of Germany",
+                "nativeName": {
+                "deu": {
+                        "official": "Bundesrepublik Deutschland",
+                        "common": "Deutschland"
+                        }
+               }
+            },
     "tld": [
     ".de"
     ],

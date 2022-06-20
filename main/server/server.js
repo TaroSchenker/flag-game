@@ -1,8 +1,9 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const PORT = 3000
+const PORT = 4030
 const countryData = require('./data.js')
+const e = require('express')
 console.log(countryData)
 
 
@@ -15,11 +16,16 @@ app.get('/country', (req, res) => {
 
 app.get('/country/name/:name', (req, res) => {
     const countryName = req.params.name;
-    const foundCountry = countryData.filter((country) => console.log(country))
-    console.log(foundCountry)
-    res.send(countryData[0].name)
-
+    for(let i = 0; i < countryData.length; i++){
+        if(countryData[i].name.common === countryName){
+            console.log('found your country')
+            res.send(countryData[i])
+        } else{
+            res.send('country not found')
+        }
+    }
 })
+
 
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`) )
